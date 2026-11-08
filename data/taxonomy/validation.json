@@ -1,0 +1,130 @@
+{
+  "version": "category_taxonomy_v1",
+  "coverage": {
+    "SKILL": {
+      "distinct_values": 123212,
+      "distinct_classified": 12530,
+      "distinct_with_parent": 11224,
+      "distinct_coverage": 0.0911,
+      "classified_coverage": 0.8958,
+      "mention_coverage": 0.8244,
+      "none_rate_classified": 0.0978,
+      "trivial_rule_dropped": 81
+    },
+    "JOB_TITLE": {
+      "distinct_values": 97195,
+      "distinct_classified": 7388,
+      "distinct_with_parent": 6507,
+      "distinct_coverage": 0.0669,
+      "classified_coverage": 0.8808,
+      "mention_coverage": 0.6367,
+      "none_rate_classified": 0.1165,
+      "trivial_rule_dropped": 20
+    },
+    "EDUCATION_FIELD": {
+      "distinct_values": 36595,
+      "distinct_classified": 2590,
+      "distinct_with_parent": 2161,
+      "distinct_coverage": 0.0591,
+      "classified_coverage": 0.8344,
+      "mention_coverage": 0.4474,
+      "none_rate_classified": 0.1533,
+      "trivial_rule_dropped": 32
+    },
+    "INDUSTRY": {
+      "distinct_values": 21057,
+      "distinct_classified": 1034,
+      "distinct_with_parent": 835,
+      "distinct_coverage": 0.0397,
+      "classified_coverage": 0.8075,
+      "mention_coverage": 0.8118,
+      "none_rate_classified": 0.1779,
+      "trivial_rule_dropped": 15
+    }
+  },
+  "low_support_categories": [],
+  "min_support_persons": 100,
+  "manual_review": {
+    "SKILL/all": {
+      "judged": 60,
+      "counts": {
+        "correct": 42,
+        "wrong": 4,
+        "debatable": 14
+      },
+      "error_rate": 0.0667,
+      "error_or_debatable_rate": 0.3
+    },
+    "SKILL/mapped": {
+      "judged": 48,
+      "counts": {
+        "correct": 37,
+        "wrong": 2,
+        "debatable": 9
+      },
+      "error_rate": 0.0417,
+      "error_or_debatable_rate": 0.2292
+    },
+    "JOB_TITLE/all": {
+      "judged": 60,
+      "counts": {
+        "debatable": 15,
+        "correct": 41,
+        "wrong": 4
+      },
+      "error_rate": 0.0667,
+      "error_or_debatable_rate": 0.3167
+    },
+    "JOB_TITLE/mapped": {
+      "judged": 48,
+      "counts": {
+        "debatable": 9,
+        "correct": 37,
+        "wrong": 2
+      },
+      "error_rate": 0.0417,
+      "error_or_debatable_rate": 0.2292
+    },
+    "EDUCATION_FIELD/all": {
+      "judged": 60,
+      "counts": {
+        "correct": 48,
+        "debatable": 9,
+        "wrong": 3
+      },
+      "error_rate": 0.05,
+      "error_or_debatable_rate": 0.2
+    },
+    "EDUCATION_FIELD/mapped": {
+      "judged": 48,
+      "counts": {
+        "correct": 41,
+        "debatable": 6,
+        "wrong": 1
+      },
+      "error_rate": 0.0208,
+      "error_or_debatable_rate": 0.1458
+    },
+    "INDUSTRY/all": {
+      "judged": 60,
+      "counts": {
+        "correct": 52,
+        "debatable": 5,
+        "wrong": 3
+      },
+      "error_rate": 0.05,
+      "error_or_debatable_rate": 0.1333
+    },
+    "INDUSTRY/mapped": {
+      "judged": 48,
+      "counts": {
+        "correct": 41,
+        "wrong": 3,
+        "debatable": 4
+      },
+      "error_rate": 0.0625,
+      "error_or_debatable_rate": 0.1458
+    }
+  },
+  "manual_review_note": "Judged by hand (not by the LLM): correct / wrong / debatable; 'none' rows are wrong when an obvious listed category was missed."
+}

@@ -1,0 +1,8 @@
+{
+  "taus": {
+    "q25": 0.2638137638568878
+  },
+  "provenance": "Development-selected threshold used by the historical adaptive v2 control in the published v3.3 evaluation.",
+  "original_artifact": "artifacts/evaluations/group_policy_dev_v2/frozen.json",
+  "original_sha256": "bb26be6d7ddd24067a29b04f1a5124c8671268c672d54380140afeaa44f80173"
+}

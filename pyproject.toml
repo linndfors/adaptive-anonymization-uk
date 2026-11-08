@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "adaptive-anonymization-uk"
+version = "0.3.0"
+description = "Risk-aware adaptive anonymization and re-identification evaluation for Ukrainian resumes"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+authors = [{ name = "linndfors" }]
+dependencies = [
+  "numpy==1.26.4",
+  "pandas>=2.2,<3",
+  "scipy>=1.12,<2",
+  "scikit-learn>=1.4,<2",
+  "tqdm>=4.66,<5",
+]
+
+[project.optional-dependencies]
+data = [
+  "datasets>=2.18,<5",
+  # pyarrow 26 requires NumPy 2; the research stack is pinned to NumPy 1.26.
+  "pyarrow>=14,<26",
+]
+detection = [
+  "torch==2.2.2",
+  "transformers==4.46.3",
+  "accelerate>=0.26,<2",
+  "huggingface-hub>=0.26,<1",
+  "onnxruntime==1.23.2",
+  "gliner==0.2.22",
+  "spacy==3.7.5",
+  "spacy-transformers==1.3.9",
+  "click>=8.1,<9",
+  "typer>=0.12,<0.16",
+  "pydantic>=2.7,<2.10",
+]
+# Optional CUDA support for spaCy on compatible Linux hosts. Keep this separate
+# from detection so CPU installations do not require a CUDA runtime.
+cuda = [
+  # spaCy 3.7 / Thinc 8.2 imports cupy.cublas, which CuPy 13 removed.
+  "cupy-cuda12x>=12.3,<13; sys_platform == 'linux' and platform_machine == 'x86_64'",
+]
+# Minimal dependency set used by the Colab fine-tuning notebook. Detection also
+# includes spaCy and ONNX, which are not needed for GLiNER training/selection.
+training = [
+  "torch==2.2.2",
+  "transformers==4.46.3",
+  "accelerate>=0.26,<2",
+  "huggingface-hub>=0.26,<1",
+  "gliner==0.2.22",
+]
+openai = [
+  "openai>=2,<3",
+  "python-dotenv>=1,<2",
+]
+dense = ["sentence-transformers>=3.2,<4"]
+notebooks = [
+  "jupyterlab>=4,<5",
+  "ipykernel>=6,<7",
+  "ipywidgets>=8,<9",
+  "matplotlib>=3.8,<4",
+]
+ui = ["streamlit>=1.40,<2"]
+dev = [
+  "pytest>=8,<9",
+  "ruff>=0.7,<1",
+]
+
+[project.scripts]
+anonrisk = "anonrisk_uk.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120

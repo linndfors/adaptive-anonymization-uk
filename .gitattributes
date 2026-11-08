@@ -1,0 +1,20 @@
+* text=auto eol=lf
+
+*.csv text eol=lf
+*.json text eol=lf
+*.jsonl text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.toml text eol=lf
+*.yml text eol=lf
+
+*.ckpt binary
+*.docx binary
+*.pkl binary
+*.pt binary
+*.safetensors binary
+
+# Generated assets stay available without dominating source-code diffs.
+data/taxonomy/category_map.json linguist-generated=true
+data/processed/e3_jsi_uk.jsonl linguist-generated=true
+uv.lock linguist-generated=true

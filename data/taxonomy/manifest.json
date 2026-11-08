@@ -1,0 +1,126 @@
+{
+  "version": "category_taxonomy_v1",
+  "model": "gpt-4.1-mini",
+  "min_persons": 3,
+  "labels": {
+    "SKILL": {
+      "distinct_values": 123212,
+      "kept_values": 12530,
+      "classified": 12530,
+      "status": {
+        "mapped": 11305,
+        "none": 1224,
+        "missing": 1
+      },
+      "batches": 127,
+      "prompt_sha256": "eb572cf5b9f87a95b7efcfcb290ab77051b178f8651298360d78f5206be14505",
+      "batch_prompt_sha256": {
+        "71f0be1922f4b233775b986c3fb243f6a6558b8721304e60a0c0af1dd85202a7": 127
+      },
+      "cost_usd": 0.40172,
+      "reserved_usd": 0.748007
+    },
+    "JOB_TITLE": {
+      "distinct_values": 97195,
+      "kept_values": 7388,
+      "classified": 7388,
+      "status": {
+        "mapped": 6527,
+        "none": 861
+      },
+      "batches": 74,
+      "prompt_sha256": "d11ebede0a25f93d77ee466780abfabc7a8905b863a3cd68c366ea218ce32e7f",
+      "batch_prompt_sha256": {
+        "83abbe0b7c1536bd2cc68803654c239025cef2ed87afc7dc6b73d69f2a2b32bd": 74
+      },
+      "cost_usd": 0.22134,
+      "reserved_usd": 0.412527
+    },
+    "EDUCATION_FIELD": {
+      "distinct_values": 36595,
+      "kept_values": 2590,
+      "classified": 2590,
+      "status": {
+        "mapped": 2193,
+        "none": 393,
+        "missing": 4
+      },
+      "batches": 26,
+      "prompt_sha256": "ec6f1e3d5a0dc5a6a755bcaa2409d55a9a45d51568c719f90304c5dc3b010a59",
+      "batch_prompt_sha256": {
+        "61d297e1560722885cd2a05a6e9fdf48d05256d771d935354081def0110c72d1": 26
+      },
+      "cost_usd": 0.067572,
+      "reserved_usd": 0.126052
+    },
+    "INDUSTRY": {
+      "distinct_values": 21057,
+      "kept_values": 1034,
+      "classified": 1034,
+      "status": {
+        "none": 184,
+        "mapped": 850
+      },
+      "batches": 11,
+      "prompt_sha256": "d3262cb049f618443069c45de2d91e2cd7012d691c9c05d8b6b4bea58d74e5ca",
+      "batch_prompt_sha256": {
+        "a6cf5f19237071b8b939860b3d27322e1aa7047836a773e3d97dabf6fbe9464d": 11
+      },
+      "cost_usd": 0.02488,
+      "reserved_usd": 0.046672
+    }
+  },
+  "calls": 238,
+  "cost_usd": 0.715512,
+  "reserved_usd": 1.333258,
+  "usage": {
+    "input_tokens": 951388,
+    "output_tokens": 209348
+  },
+  "ledger": {
+    "reserved_usd": 1.402337,
+    "calls": 252
+  },
+  "coverage": {
+    "SKILL": {
+      "distinct_values": 123212,
+      "distinct_classified": 12530,
+      "distinct_with_parent": 11224,
+      "distinct_coverage": 0.0911,
+      "classified_coverage": 0.8958,
+      "mention_coverage": 0.8244,
+      "none_rate_classified": 0.0978,
+      "trivial_rule_dropped": 81
+    },
+    "JOB_TITLE": {
+      "distinct_values": 97195,
+      "distinct_classified": 7388,
+      "distinct_with_parent": 6507,
+      "distinct_coverage": 0.0669,
+      "classified_coverage": 0.8808,
+      "mention_coverage": 0.6367,
+      "none_rate_classified": 0.1165,
+      "trivial_rule_dropped": 20
+    },
+    "EDUCATION_FIELD": {
+      "distinct_values": 36595,
+      "distinct_classified": 2590,
+      "distinct_with_parent": 2161,
+      "distinct_coverage": 0.0591,
+      "classified_coverage": 0.8344,
+      "mention_coverage": 0.4474,
+      "none_rate_classified": 0.1533,
+      "trivial_rule_dropped": 32
+    },
+    "INDUSTRY": {
+      "distinct_values": 21057,
+      "distinct_classified": 1034,
+      "distinct_with_parent": 835,
+      "distinct_coverage": 0.0397,
+      "classified_coverage": 0.8075,
+      "mention_coverage": 0.8118,
+      "none_rate_classified": 0.1779,
+      "trivial_rule_dropped": 15
+    }
+  }
+}

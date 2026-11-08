@@ -1,0 +1,25 @@
+{
+  "method": "adaptive_resume_v3.3",
+  "resources_config": "configs/research_entity_policy_v4c_local.json",
+  "adaptive": {
+    "target": 0.0,
+    "utility_floor": 0.55
+  },
+  "selection": {
+    "dataset": "development only; 200 queries / 100 persons; background 8000",
+    "reports": [
+      "artifacts/evaluations/adaptive_v3_development/report.json",
+      "artifacts/evaluations/adaptive_v3_development_balance/report.json"
+    ],
+    "candidate_utility_floors": [
+      0.15,
+      0.25,
+      0.35,
+      0.45,
+      0.55
+    ],
+    "rule": "highest lexical utility with both development recalls <= historical L2 + 0.05",
+    "selected_utility_floor": 0.55,
+    "final_test_used": false
+  }
+}

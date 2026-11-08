@@ -1,0 +1,6 @@
+{
+  "source": "https://huggingface.co/datasets/KSE-RESEARCH-Group/Work_UA_vacancies/resolve/main/vacancies.ndjson",
+  "n_vacancies": 10000,
+  "selection": "first_n_not_random",
+  "sha256": "77ee620e0f3aa7875263db74e7d65b69384a10acc12b05392f8b5a0c8180161e"
+}

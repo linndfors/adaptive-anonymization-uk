@@ -1,0 +1,241 @@
+label,stratum,value,persons,l1,l1_name,l2_name,judgement,note
+SKILL,none,URP,4,none,,,correct,
+SKILL,none,Арт.Звит,19,none,,,correct,
+SKILL,none,Pinecone,3,none,,,wrong,vector DB; databases missed
+SKILL,none,Spark AR,4,none,,,debatable,AR effects tool; design plausible
+SKILL,none,Loki,8,none,,,debatable,Loki ambiguous; devops plausible
+SKILL,none,Socket,4,none,,,correct,
+SKILL,none,Planmeca,17,none,,,debatable,dental equipment; clinical plausible
+SKILL,none,IVMS,3,none,,,debatable,video surveillance software; security plausible
+SKILL,none,DTO,5,none,,,correct,
+SKILL,none,Рукопашный бой,7,none,,,wrong,martial art; fitness missed
+SKILL,none,Sabre,3,none,,,correct,
+SKILL,none,Астра Розкрій,3,none,,,debatable,cutting software; CAD plausible
+SKILL,mapped_low,Ant.Logistics,3,logistics,логістика та перевезення,"транспорт, логістика та склад",correct,
+SKILL,mapped_low,Викладання громадянської освіти,3,teaching,педагогічна діяльність,"освіта, психологія та соціальна робота",correct,
+SKILL,mapped_low,FreeRTOS,3,prog_lang,мови програмування,ІТ та розроблення програмного забезпечення,wrong,"FreeRTOS is an OS, not a language"
+SKILL,mapped_low,Створення графіків роботи,3,planning,організація робіт і проєктів,управління та адміністрування,correct,
+SKILL,mapped_low,Номенклатура,3,accounting,облікова та податкова робота,"фінанси, облік і право",debatable,item catalogue; accounting is a stretch
+SKILL,mapped_low,Конкурентный анализ,4,mkt_strategy,маркетингова стратегія та дослідження,маркетинг і реклама,correct,
+SKILL,mapped_low,3D моделирование,4,cad3d,САПР і тривимірна графіка,"дизайн, медіа та творчість",correct,
+SKILL,mapped_low,Scanner,3,pc_basic,базова комп'ютерна грамотність,цифрові навички,correct,
+SKILL,mapped_low,СРМ системи,3,crm,системи керування клієнтською базою,цифрові навички,correct,
+SKILL,mapped_low,HIG (Human Interface Guidelines),4,uiux,дизайн інтерфейсів,"дизайн, медіа та творчість",correct,
+SKILL,mapped_low,CupCat,3,video,відеовиробництво,"дизайн, медіа та творчість",correct,
+SKILL,mapped_low,Уміння дотримуватись дедлайнів,3,self_org,самоорганізація,особисті та міжособистісні якості,correct,
+SKILL,mapped_low,Розвиток партнерств,3,sales_tech,техніки продажу та переговорів,продажі та торгівля,debatable,partnership development: sales or management
+SKILL,mapped_low,Ручна робота,3,arts,мистецтво та рукоділля,"дизайн, медіа та творчість",correct,
+SKILL,mapped_low,Учет медикаментов,3,med_admin,медична документація та облік,медицина та догляд за здоров'ям,correct,
+SKILL,mapped_low,Розробка скриптів продажів,3,sales_tech,техніки продажу та переговорів,продажі та торгівля,correct,
+SKILL,mapped_mid,Team Motivation,6,leadership,керівництво командою,управління та адміністрування,correct,
+SKILL,mapped_mid,Стрижка бороди,7,beauty,б'юті-послуги,сфера обслуговування,correct,
+SKILL,mapped_mid,Знання офісної техніки,8,pc_basic,базова комп'ютерна грамотність,цифрові навички,correct,
+SKILL,mapped_mid,Робота з пацієнтами,4,clinical,клінічні та фармацевтичні знання,медицина та догляд за здоров'ям,debatable,"patient work is care, not clinical knowledge"
+SKILL,mapped_mid,Збір замовлень,10,retail_ops,робота з товаром у роздрібній торгівлі,продажі та торгівля,debatable,order picking fits warehouse better
+SKILL,mapped_mid,IT.рекрутинг,5,hr,рекрутинг і кадрова робота,управління та адміністрування,correct,
+SKILL,mapped_mid,Складання клопотань,5,legal,правнича робота,"фінанси, облік і право",correct,
+SKILL,mapped_mid,УТ,5,erp,облікові та ERP-програми,цифрові навички,correct,
+SKILL,mapped_mid,Subtitle Edit,5,video,відеовиробництво,"дизайн, медіа та творчість",correct,
+SKILL,mapped_mid,Викладання юридичної англійської,5,teaching,педагогічна діяльність,"освіта, психологія та соціальна робота",correct,
+SKILL,mapped_mid,Технічний супровід,5,devops,"DevOps, хмари та адміністрування систем",ІТ та розроблення програмного забезпечення,debatable,technical support: IT ops or generic
+SKILL,mapped_mid,SDLC/STLC,6,dev_process,методології розроблення та керування задачами,ІТ та розроблення програмного забезпечення,correct,
+SKILL,mapped_mid,Контроль якості обслуговування,8,customer,обслуговування клієнтів і телефонні комунікації,продажі та торгівля,correct,
+SKILL,mapped_mid,Чистка ПК,4,pc_basic,базова комп'ютерна грамотність,цифрові навички,debatable,PC cleaning: maintenance rather than literacy
+SKILL,mapped_mid,Розвинені комунікативні навички,7,communication,навички ділового спілкування,особисті та міжособистісні якості,correct,
+SKILL,mapped_mid,Написання текстів для соцмереж,6,writing,робота з текстами,"дизайн, медіа та творчість",correct,
+SKILL,mapped_high,Комунікативні навички,283,communication,навички ділового спілкування,особисті та міжособистісні якості,correct,
+SKILL,mapped_high,Вечірній макіяж,19,beauty,б'юті-послуги,сфера обслуговування,correct,
+SKILL,mapped_high,Офісна техніка,91,pc_basic,базова комп'ютерна грамотність,цифрові навички,correct,
+SKILL,mapped_high,YCLIENTS,12,crm,системи керування клієнтською базою,цифрові навички,correct,
+SKILL,mapped_high,Фінанси,18,finance,фінансовий та економічний аналіз,"фінанси, облік і право",correct,
+SKILL,mapped_high,Взаємодія з державними органами,23,procurement,закупівлі та постачання,продажі та торгівля,wrong,government relations is not procurement
+SKILL,mapped_high,Настойчивость,78,drive,внутрішня мотивація,особисті та міжособистісні якості,correct,
+SKILL,mapped_high,SVG,11,frontend,вебверстка та фронтенд-технології,ІТ та розроблення програмного забезпечення,correct,
+SKILL,mapped_high,Ораторське мистецтво,31,communication,навички ділового спілкування,особисті та міжособистісні якості,correct,
+SKILL,mapped_high,Excel,2121,office,офісні програми,цифрові навички,correct,
+SKILL,mapped_high,Visualization,21,data,аналітика даних,ІТ та розроблення програмного забезпечення,debatable,"visualization may be 3D, not data"
+SKILL,mapped_high,Спорт,20,fitness,фітнес і спортивна підготовка,медицина та догляд за здоров'ям,correct,
+SKILL,mapped_high,Легко знаходжу спільну мову з людьми,16,interpersonal,міжособистісна взаємодія,особисті та міжособистісні якості,correct,
+SKILL,mapped_high,Рішучість,91,drive,внутрішня мотивація,особисті та міжособистісні якості,debatable,decisiveness is not motivation
+SKILL,mapped_high,Написання наукових робіт,51,writing,робота з текстами,"дизайн, медіа та творчість",correct,
+SKILL,mapped_high,QGIS,48,data,аналітика даних,ІТ та розроблення програмного забезпечення,debatable,QGIS is GIS; data analytics loose
+JOB_TITLE,none,Спеціаліст по роботі з проблемною заборгованістю,9,none,,,debatable,debt collection; finance plausible
+JOB_TITLE,none,Молодший науковий співробітник,33,none,,,correct,
+JOB_TITLE,none,Помічник народного депутата,5,none,,,debatable,MP assistant; office admin plausible
+JOB_TITLE,none,Продюсер,27,none,,,debatable,producer; media/arts plausible
+JOB_TITLE,none,Тракторист комбайнер,4,none,,,debatable,tractor driver; driver/agro plausible
+JOB_TITLE,none,Бібліотекар І категорії,3,none,,,correct,
+JOB_TITLE,none,Метеоролог,5,none,,,correct,
+JOB_TITLE,none,Спеціаліст договірного відділу,8,none,,,debatable,contracts department; legal plausible
+JOB_TITLE,none,Супервізор,10,none,,,correct,
+JOB_TITLE,none,Метролог,12,none,,,wrong,metrologist is an engineer; missed
+JOB_TITLE,none,Помощник печатника,3,none,,,debatable,printer helper; production line plausible
+JOB_TITLE,none,Вчитель.логопед,6,none,,,wrong,teacher-speech therapist; teacher missed
+JOB_TITLE,mapped_low,"Керівник, головний інженер",3,exec,керівник організації,керівники,debatable,"composite title, head vs engineer"
+JOB_TITLE,mapped_low,Дизайнер креативів,3,designer,фахівець з дизайну,"фахівці з маркетингу, медіа та дизайну",correct,
+JOB_TITLE,mapped_low,Військовий перекладач,4,translator,фахівець з перекладу,"фахівці з маркетингу, медіа та дизайну",correct,
+JOB_TITLE,mapped_low,Інженер з проектно-кошторисної документації,3,engineer,інженерно-технічний фахівець,інженерно-технічні фахівці,correct,
+JOB_TITLE,mapped_low,Механик автоколонны,3,mechanic,фахівець з ремонту техніки,кваліфіковані робітники,correct,
+JOB_TITLE,mapped_low,Заступник директора з економічної безпеки,3,dept_head,керівник структурного підрозділу,керівники,debatable,deputy director: exec vs department head
+JOB_TITLE,mapped_low,Начальник групи,3,dept_head,керівник структурного підрозділу,керівники,correct,
+JOB_TITLE,mapped_low,Складальниця,3,operator,робітник виробничої лінії,кваліфіковані робітники,correct,
+JOB_TITLE,mapped_low,Заступник начальника відділу інформаційних технологій,3,dept_head,керівник структурного підрозділу,керівники,correct,
+JOB_TITLE,mapped_low,Керівник агенції,3,exec,керівник організації,керівники,correct,
+JOB_TITLE,mapped_low,Оперуповноважений відділення карного розшуку,3,police,працівник правоохоронних органів,сили оборони та правоохоронні органи,correct,
+JOB_TITLE,mapped_low,бухгалтера,3,accountant,фахівець з бухгалтерського обліку,"фахівці з фінансів, обліку та права",correct,
+JOB_TITLE,mapped_low,"Торговий представник,мерчендайзер",3,sales_rep,торговий агент,фахівці з продажу та роботи з клієнтами,correct,
+JOB_TITLE,mapped_low,Завгар,3,builder,робітник будівельних спеціальностей,кваліфіковані робітники,wrong,garage manager is not a construction worker
+JOB_TITLE,mapped_low,Заведующий аптекой,3,pharma,фармацевтичний працівник,медичні та фармацевтичні працівники,debatable,pharmacy head is a manager
+JOB_TITLE,mapped_low,головний спеціаліст управління економіки,3,economist,фахівець з фінансів та економіки,"фахівці з фінансів, обліку та права",correct,
+JOB_TITLE,mapped_mid,Пресувальник,4,operator,робітник виробничої лінії,кваліфіковані робітники,correct,
+JOB_TITLE,mapped_mid,Делопроизводитель,6,office_admin,працівник офісної адміністрації,офісні та адміністративні працівники,correct,
+JOB_TITLE,mapped_mid,Анестезиолог,9,doctor,лікарський персонал,медичні та фармацевтичні працівники,correct,
+JOB_TITLE,mapped_mid,Социолог,4,analyst,фахівець з аналізу даних і бізнес-процесів,ІТ-фахівці,debatable,sociologist is a social scientist
+JOB_TITLE,mapped_mid,Технолог швейного виробництва,6,sewing,працівник швейного виробництва,кваліфіковані робітники,wrong,"technologist is engineering, not a sewing worker"
+JOB_TITLE,mapped_mid,Проектный менеджер,5,pm,фахівець з управління проєктами та продуктами,керівники,correct,
+JOB_TITLE,mapped_mid,3D-визуализатор,8,designer,фахівець з дизайну,"фахівці з маркетингу, медіа та дизайну",correct,
+JOB_TITLE,mapped_mid,Скульптор,7,artist,працівник мистецтва та культури,"фахівці з маркетингу, медіа та дизайну",correct,
+JOB_TITLE,mapped_mid,Quality Manager,7,dept_head,керівник структурного підрозділу,керівники,debatable,quality manager may be a specialist
+JOB_TITLE,mapped_mid,"Логіст, менеджер з продажу",5,sales_mgr,фахівець з продажів і клієнтського сервісу,фахівці з продажу та роботи з клієнтами,correct,
+JOB_TITLE,mapped_mid,Дільничний інспектор міліції,8,police,працівник правоохоронних органів,сили оборони та правоохоронні органи,correct,
+JOB_TITLE,mapped_mid,Фінансовий спеціаліст,7,economist,фахівець з фінансів та економіки,"фахівці з фінансів, обліку та права",correct,
+JOB_TITLE,mapped_mid,Старший касир торговельного залу,4,shop_floor,працівник торговельного залу,працівники торгівлі,correct,
+JOB_TITLE,mapped_mid,Менеджер з бронювання,7,tourism,фахівець з туризму,фахівці з продажу та роботи з клієнтами,debatable,booking manager: tourism or hospitality
+JOB_TITLE,mapped_mid,Заступник начальника охорони,6,dept_head,керівник структурного підрозділу,керівники,correct,
+JOB_TITLE,mapped_mid,Руководитель склада,4,warehouse,працівник складу,"працівники транспорту, логістики та складу",debatable,warehouse head is a manager
+JOB_TITLE,mapped_high,"Копірайтер, контент-менеджер",9,digital_mkt,фахівець з цифрового просування,"фахівці з маркетингу, медіа та дизайну",correct,
+JOB_TITLE,mapped_high,Оператор котельной,13,operator,робітник виробничої лінії,кваліфіковані робітники,debatable,"boiler operator is a plant operator, not line worker"
+JOB_TITLE,mapped_high,Инженер по подготовке производства,9,engineer,інженерно-технічний фахівець,інженерно-технічні фахівці,correct,
+JOB_TITLE,mapped_high,Покоївка,148,housekeeping,працівник прибирання та готельного господарства,працівники сфери обслуговування,correct,
+JOB_TITLE,mapped_high,Інженер ПТО,25,engineer,інженерно-технічний фахівець,інженерно-технічні фахівці,correct,
+JOB_TITLE,mapped_high,Вчитель фізкультури,54,teacher,педагогічний працівник,працівники освіти та соціальної сфери,correct,
+JOB_TITLE,mapped_high,Клинер,9,housekeeping,працівник прибирання та готельного господарства,працівники сфери обслуговування,correct,
+JOB_TITLE,mapped_high,Фінансист,98,economist,фахівець з фінансів та економіки,"фахівці з фінансів, обліку та права",correct,
+JOB_TITLE,mapped_high,Касир продавець,11,shop_floor,працівник торговельного залу,працівники торгівлі,correct,
+JOB_TITLE,mapped_high,Middle PHP Developer,10,developer,розробник програмного забезпечення,ІТ-фахівці,correct,
+JOB_TITLE,mapped_high,Junior UX/UI Designer,12,designer,фахівець з дизайну,"фахівці з маркетингу, медіа та дизайну",correct,
+JOB_TITLE,mapped_high,Особистий водій керівника,18,driver,працівник автотранспорту,"працівники транспорту, логістики та складу",correct,
+JOB_TITLE,mapped_high,Оператор call center,11,support,оператор контакт-центру та підтримки клієнтів,фахівці з продажу та роботи з клієнтами,correct,
+JOB_TITLE,mapped_high,Завскладом,18,warehouse,працівник складу,"працівники транспорту, логістики та складу",correct,
+JOB_TITLE,mapped_high,Менеджер з розвитку бізнесу,15,pm,фахівець з управління проєктами та продуктами,керівники,debatable,business development is closer to sales
+JOB_TITLE,mapped_high,Заступник директора з виробництва,33,exec,керівник організації,керівники,correct,
+EDUCATION_FIELD,none,ГРС,4,none,,,correct,
+EDUCATION_FIELD,none,Філології та масових комунікацій,3,none,,,debatable,mixed faculty; philology plausible
+EDUCATION_FIELD,none,Технік технолог,19,none,,,correct,
+EDUCATION_FIELD,none,Бібліотекар,3,none,,,correct,
+EDUCATION_FIELD,none,Зварювальник,14,none,,,debatable,vocational welding; no vocational category
+EDUCATION_FIELD,none,ГС,3,none,,,correct,
+EDUCATION_FIELD,none,Автоматизація виробництва,4,none,,,wrong,automation engineering missed
+EDUCATION_FIELD,none,Повар.кондитер,36,none,,,debatable,vocational cook; no vocational category
+EDUCATION_FIELD,none,Физмат,3,none,,,wrong,physics-maths; science/math missed
+EDUCATION_FIELD,none,"Факультет економіки, менеджменту та психології",4,none,,,correct,
+EDUCATION_FIELD,none,Технологический,12,none,,,correct,
+EDUCATION_FIELD,none,ФІІТА,3,none,,,correct,
+EDUCATION_FIELD,mapped_low,Biology,3,natural,природничі науки,природничі науки та математика,correct,
+EDUCATION_FIELD,mapped_low,"Право, правоохоронна діяльність",3,security,безпека та правоохоронна діяльність,сфера послуг,correct,
+EDUCATION_FIELD,mapped_low,Менеджмент готельно.ресторанного та туристичного бізнесу,3,management,управлінські спеціальності,"бізнес, адміністрування та юриспруденція",correct,
+EDUCATION_FIELD,mapped_low,Художня кераміка,3,arts,мистецькі спеціальності,гуманітарні науки та мистецтво,correct,
+EDUCATION_FIELD,mapped_low,Автоматизація та комп’ютерно інтегровані технології,3,software,ІТ-спеціальності з програмування,інформаційно-комунікаційні технології,debatable,"automation is engineering, not programming"
+EDUCATION_FIELD,mapped_low,Теплоенергетичний,3,electro,електротехніка та енергетика,"інженерія, виробництво та будівництво",correct,
+EDUCATION_FIELD,mapped_low,015.39 Професійна освіта (Цифрові технології),3,pedagogy,педагогічна освіта,освіта і педагогіка,correct,
+EDUCATION_FIELD,mapped_low,Бакалавр з фінансів і кредиту,3,finance,фінансово-облікові спеціальності,"бізнес, адміністрування та юриспруденція",correct,
+EDUCATION_FIELD,mapped_low,"Лікувальна справа, лікар",3,medicine,лікарські спеціальності,охорона здоров'я та соціальне забезпечення,correct,
+EDUCATION_FIELD,mapped_low,Архітектурне проектування та внутрішній інтер'єр,3,construction,будівництво та архітектура,"інженерія, виробництво та будівництво",correct,
+EDUCATION_FIELD,mapped_low,Організація перевезень на залізничному транспорті,3,transport,транспорт і логістика,сфера послуг,correct,
+EDUCATION_FIELD,mapped_low,Кухар офіціант бармен,3,chem_food,хімічні та харчові технології,"інженерія, виробництво та будівництво",wrong,"cook/waiter/bartender is hospitality, not food technology"
+EDUCATION_FIELD,mapped_low,Инженер электросвязи,3,telecom,комп'ютерна інженерія та телекомунікації,інформаційно-комунікаційні технології,correct,
+EDUCATION_FIELD,mapped_low,Транспортна логістика,3,transport,транспорт і логістика,сфера послуг,correct,
+EDUCATION_FIELD,mapped_low,"Факультет іноземних мов, англо.український переклад",3,philology,мовознавство й літературознавство,гуманітарні науки та мистецтво,correct,
+EDUCATION_FIELD,mapped_low,Інженер-теплоенергетик,3,electro,електротехніка та енергетика,"інженерія, виробництво та будівництво",correct,
+EDUCATION_FIELD,mapped_mid,Администратор,4,management,управлінські спеціальності,"бізнес, адміністрування та юриспруденція",debatable,administrator is not a field of study
+EDUCATION_FIELD,mapped_mid,Реставрація творів мистецтва,4,arts,мистецькі спеціальності,гуманітарні науки та мистецтво,correct,
+EDUCATION_FIELD,mapped_mid,Технологія зберігання та переробки зерна,4,agro,аграрні спеціальності,аграрні науки,debatable,grain processing: food technology
+EDUCATION_FIELD,mapped_mid,Міжнародні комунікації,5,politics,міжнародні відносини та політичні науки,соціальні та поведінкові науки,correct,
+EDUCATION_FIELD,mapped_mid,Master of Law,5,law,юридична освіта,"бізнес, адміністрування та юриспруденція",correct,
+EDUCATION_FIELD,mapped_mid,073 Менеджмент,7,management,управлінські спеціальності,"бізнес, адміністрування та юриспруденція",correct,
+EDUCATION_FIELD,mapped_mid,Менеджер економіст,4,management,управлінські спеціальності,"бізнес, адміністрування та юриспруденція",correct,
+EDUCATION_FIELD,mapped_mid,Менеджмент у невиробничій сфері,4,management,управлінські спеціальності,"бізнес, адміністрування та юриспруденція",correct,
+EDUCATION_FIELD,mapped_mid,Декоративно.прикладне мистецтво,5,arts,мистецькі спеціальності,гуманітарні науки та мистецтво,correct,
+EDUCATION_FIELD,mapped_mid,Станковий живопис,5,arts,мистецькі спеціальності,гуманітарні науки та мистецтво,correct,
+EDUCATION_FIELD,mapped_mid,Учитель початкових класів,5,pedagogy,педагогічна освіта,освіта і педагогіка,correct,
+EDUCATION_FIELD,mapped_mid,Технік.будівельник,4,construction,будівництво та архітектура,"інженерія, виробництво та будівництво",correct,
+EDUCATION_FIELD,mapped_mid,Технолог громадського харчування,4,chem_food,хімічні та харчові технології,"інженерія, виробництво та будівництво",correct,
+EDUCATION_FIELD,mapped_mid,Романська філологія,4,philology,мовознавство й літературознавство,гуманітарні науки та мистецтво,correct,
+EDUCATION_FIELD,mapped_mid,Експлуатація суднових енергетичних установок,4,electro,електротехніка та енергетика,"інженерія, виробництво та будівництво",debatable,marine power plants: mechanical vs electrical
+EDUCATION_FIELD,mapped_mid,Энергетический,5,electro,електротехніка та енергетика,"інженерія, виробництво та будівництво",correct,
+EDUCATION_FIELD,mapped_high,Електроенергетика,14,electro,електротехніка та енергетика,"інженерія, виробництво та будівництво",correct,
+EDUCATION_FIELD,mapped_high,Медичний факультет,28,medicine,лікарські спеціальності,охорона здоров'я та соціальне забезпечення,correct,
+EDUCATION_FIELD,mapped_high,Information Systems and Technologies,11,software,ІТ-спеціальності з програмування,інформаційно-комунікаційні технології,correct,
+EDUCATION_FIELD,mapped_high,Організація перевезень,7,transport,транспорт і логістика,сфера послуг,correct,
+EDUCATION_FIELD,mapped_high,Телекомунікаційні системи та мережі,15,telecom,комп'ютерна інженерія та телекомунікації,інформаційно-комунікаційні технології,correct,
+EDUCATION_FIELD,mapped_high,Гірничий інженер,13,mech,машинобудування та механіка,"інженерія, виробництво та будівництво",debatable,mining engineering absent; mechanics nearest
+EDUCATION_FIELD,mapped_high,"Геодезія, картографія та землеустрій",10,natural,природничі науки,природничі науки та математика,debatable,geodesy is closer to engineering
+EDUCATION_FIELD,mapped_high,Комп’ютерні науки,56,software,ІТ-спеціальності з програмування,інформаційно-комунікаційні технології,correct,
+EDUCATION_FIELD,mapped_high,Программист,8,software,ІТ-спеціальності з програмування,інформаційно-комунікаційні технології,correct,
+EDUCATION_FIELD,mapped_high,Інженер програмного забезпечення,18,software,ІТ-спеціальності з програмування,інформаційно-комунікаційні технології,correct,
+EDUCATION_FIELD,mapped_high,Електроніка,11,electro,електротехніка та енергетика,"інженерія, виробництво та будівництво",correct,
+EDUCATION_FIELD,mapped_high,Фельдшер,157,nursing,середня медична освіта,охорона здоров'я та соціальне забезпечення,correct,
+EDUCATION_FIELD,mapped_high,Инженер механик,16,mech,машинобудування та механіка,"інженерія, виробництво та будівництво",correct,
+EDUCATION_FIELD,mapped_high,Облік та аудит,332,finance,фінансово-облікові спеціальності,"бізнес, адміністрування та юриспруденція",correct,
+EDUCATION_FIELD,mapped_high,Коммерческая деятельность,12,marketing,комерційні спеціальності,"бізнес, адміністрування та юриспруденція",correct,
+EDUCATION_FIELD,mapped_high,Финансы,75,finance,фінансово-облікові спеціальності,"бізнес, адміністрування та юриспруденція",correct,
+INDUSTRY,none,Киев,5,none,,,correct,
+INDUSTRY,none,Одесская обл.,4,none,,,correct,
+INDUSTRY,none,дистанційно,4,none,,,correct,
+INDUSTRY,none,Туреччина,4,none,,,correct,
+INDUSTRY,none,Львовская обл.,3,none,,,correct,
+INDUSTRY,none,Одесса,5,none,,,correct,
+INDUSTRY,none,freelance,7,none,,,correct,
+INDUSTRY,none,Комунальне господарство,6,none,,,debatable,utilities; no clean category
+INDUSTRY,none,Николаевская обл.,76,none,,,correct,
+INDUSTRY,none,Полтавська обл.,5,none,,,correct,
+INDUSTRY,none,"Адмiнiстрацiя, керівництво середньої ланки",7,none,,,correct,
+INDUSTRY,none,Remote,5,none,,,correct,
+INDUSTRY,mapped_low,IT Education,3,education,освітня та наукова сфера,державний і неприбутковий сектор,correct,
+INDUSTRY,mapped_low,Agricultural Company,3,food_agro,агропромисловий комплекс,промисловий і будівельний сектор,correct,
+INDUSTRY,mapped_low,Кіноіндустрія,3,media,"медіа, маркетинг і креативні індустрії","інформаційні, фінансові та професійні послуги",correct,
+INDUSTRY,mapped_low,Видобувна промисловість,3,energy,паливно-енергетичний комплекс,промисловий і будівельний сектор,correct,
+INDUSTRY,mapped_low,"Роздрібна торгівля, Логістика",3,trade,торговельна діяльність,товарообіг і логістика,correct,
+INDUSTRY,mapped_low,"Сільське господарство, Логістика",3,food_agro,агропромисловий комплекс,промисловий і будівельний сектор,correct,
+INDUSTRY,mapped_low,Послуги для населення,3,households,послуги приватним особам,сфера послуг,wrong,services for population belong to beauty/household services
+INDUSTRY,mapped_low,мережа ресторанів,3,horeca,індустрія гостинності,сфера послуг,correct,
+INDUSTRY,mapped_low,Kadorr Hotel Resort . Spa,4,horeca,індустрія гостинності,сфера послуг,correct,
+INDUSTRY,mapped_low,Київської міської державної адміністрації,3,government,державне управління та оборона,державний і неприбутковий сектор,correct,
+INDUSTRY,mapped_low,"Харчова промисловість, Роздрібна торгівля",3,trade,торговельна діяльність,товарообіг і логістика,debatable,food industry + retail mixed
+INDUSTRY,mapped_low,Розваги,3,media,"медіа, маркетинг і креативні індустрії","інформаційні, фінансові та професійні послуги",correct,
+INDUSTRY,mapped_low,Альтернативна енергетика,4,energy,паливно-енергетичний комплекс,промисловий і будівельний сектор,correct,
+INDUSTRY,mapped_low,Архітектурні та дизайнерські бюро,4,construction,будівельна та девелоперська галузь,промисловий і будівельний сектор,debatable,design bureaus partly media/design
+INDUSTRY,mapped_low,"IT, Software Development",4,it_telecom,інформаційні технології та зв'язок,"інформаційні, фінансові та професійні послуги",correct,
+INDUSTRY,mapped_low,Автомобильная промышленность и Автобизнес,3,auto,автосервіс і автобізнес,сфера послуг,correct,
+INDUSTRY,mapped_mid,Побутова техніка,5,households,послуги приватним особам,сфера послуг,wrong,household appliances is trade/manufacturing
+INDUSTRY,mapped_mid,Державна служба / Місцеве самоврядування,5,government,державне управління та оборона,державний і неприбутковий сектор,correct,
+INDUSTRY,mapped_mid,КМДА,6,government,державне управління та оборона,державний і неприбутковий сектор,correct,
+INDUSTRY,mapped_mid,Надання юридичних послуг,4,professional,професійні та бізнес-послуги,"інформаційні, фінансові та професійні послуги",correct,
+INDUSTRY,mapped_mid,Мясная промышленность,5,food_agro,агропромисловий комплекс,промисловий і будівельний сектор,correct,
+INDUSTRY,mapped_mid,продаж меблів,7,trade,торговельна діяльність,товарообіг і логістика,correct,
+INDUSTRY,mapped_mid,Мережа супермаркетів,6,trade,торговельна діяльність,товарообіг і логістика,correct,
+INDUSTRY,mapped_mid,IT Company,7,it_telecom,інформаційні технології та зв'язок,"інформаційні, фінансові та професійні послуги",correct,
+INDUSTRY,mapped_mid,Оптовая и розничная торговля,7,trade,торговельна діяльність,товарообіг і логістика,correct,
+INDUSTRY,mapped_mid,Військова справа,6,government,державне управління та оборона,державний і неприбутковий сектор,correct,
+INDUSTRY,mapped_mid,Ветеринарія,5,health,охорона здоров'я та фармацевтика,сфера послуг,debatable,veterinary is not human health
+INDUSTRY,mapped_mid,Охрана и Безопасность,6,security,охоронні послуги,сфера послуг,correct,
+INDUSTRY,mapped_mid,Торгівля будівельними матеріалами,7,trade,торговельна діяльність,товарообіг і логістика,correct,
+INDUSTRY,mapped_mid,"Роздрібна торгівля, Мода",4,trade,торговельна діяльність,товарообіг і логістика,correct,
+INDUSTRY,mapped_mid,Рекламні послуги,6,media,"медіа, маркетинг і креативні індустрії","інформаційні, фінансові та професійні послуги",correct,
+INDUSTRY,mapped_mid,Non.profit and charitable organizations,8,ngo,громадський сектор,державний і неприбутковий сектор,correct,
+INDUSTRY,mapped_high,Побутова хімія,8,households,послуги приватним особам,сфера послуг,wrong,household chemicals is manufacturing/trade
+INDUSTRY,mapped_high,"Шоу.бізнес, мистецтво, культура",706,media,"медіа, маркетинг і креативні індустрії","інформаційні, фінансові та професійні послуги",correct,
+INDUSTRY,mapped_high,Нерухомість та Девелопмент,11,construction,будівельна та девелоперська галузь,промисловий і будівельний сектор,correct,
+INDUSTRY,mapped_high,Будівельна компанія,19,construction,будівельна та девелоперська галузь,промисловий і будівельний сектор,correct,
+INDUSTRY,mapped_high,Logistics,22,transport,транспортні та логістичні послуги,товарообіг і логістика,correct,
+INDUSTRY,mapped_high,Отели / Рестораны / Развлекательные комплексы,10,horeca,індустрія гостинності,сфера послуг,correct,
+INDUSTRY,mapped_high,Горная промышленность,40,energy,паливно-енергетичний комплекс,промисловий і будівельний сектор,correct,
+INDUSTRY,mapped_high,ясла.садок,25,education,освітня та наукова сфера,державний і неприбутковий сектор,correct,
+INDUSTRY,mapped_high,Безпека,24,security,охоронні послуги,сфера послуг,correct,
+INDUSTRY,mapped_high,Automotive,10,auto,автосервіс і автобізнес,сфера послуг,correct,
+INDUSTRY,mapped_high,Маркетинг,17,media,"медіа, маркетинг і креативні індустрії","інформаційні, фінансові та професійні послуги",correct,
+INDUSTRY,mapped_high,Виробництво будівельних матеріалів,10,construction,будівельна та девелоперська галузь,промисловий і будівельний сектор,correct,
+INDUSTRY,mapped_high,Автобизнес и автосервис,172,auto,автосервіс і автобізнес,сфера послуг,correct,
+INDUSTRY,mapped_high,Торгівля оптова / Дистрибуція / Імпорт-експорт,19,trade,торговельна діяльність,товарообіг і логістика,correct,
+INDUSTRY,mapped_high,Продаж будівельних матеріалів,11,construction,будівельна та девелоперська галузь,промисловий і будівельний сектор,debatable,selling building materials is trade
+INDUSTRY,mapped_high,Telecommunications,16,it_telecom,інформаційні технології та зв'язок,"інформаційні, фінансові та професійні послуги",correct,
