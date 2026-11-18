@@ -9,7 +9,6 @@ include .streamlit/config.toml
 include data/README.md
 recursive-include docs *.md
 recursive-include scripts *.py *.md
-recursive-include tests *.py *.json *.txt
 recursive-include .github/workflows *.yml
 prune artifacts
 prune results

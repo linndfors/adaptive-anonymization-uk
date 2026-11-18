@@ -21,8 +21,8 @@ probability of identification; the output requires review before publication.
 - The separately supplied runtime archive for the trained thesis model.
 - Internet access for initial dependency and public NER-weight downloads.
 
-Run all commands from the repository root. The repository contains source code,
-synthetic software tests and technical instructions. Datasets,
+Run all commands from the repository root. The repository contains source code
+and technical instructions. Datasets,
 trained weights, generated reports and thesis drafts are supplied separately.
 
 ## 1. Install
@@ -80,7 +80,7 @@ Process a file from the command line:
 ```bash
 mkdir -p artifacts/outputs
 uv run python scripts/anonymize_resume.py \
-  --input tests/fixtures/resume_prose_regression.txt \
+  --input /path/to/resume.txt \
   --output artifacts/outputs/resume_anonymized.txt
 ```
 
@@ -94,13 +94,12 @@ These checks need no trained weights or datasets:
 
 ```bash
 uv sync --locked --extra dev
-uv run ruff check src app scripts tests
-uv run pytest -q
+uv run ruff check src app scripts
 uv run python scripts/check_repository.py
 ```
 
-Tests use synthetic inputs and mocks. Streamlit-specific tests require the
-`ui` extra. CI runs the checks and builds the source and wheel distributions.
+CI checks lint, Python compilation and source submission boundaries, then builds
+and inspects the source and wheel distributions.
 
 ## 5. Reproduce experiments or train
 
@@ -128,7 +127,6 @@ guarantee the original split, weights or numerical results.
 | `configs/adaptive_resume.json` | Active model and resource paths |
 | `configs/baselines/` | Explicit comparison configurations |
 | `scripts/` | Preparation, training, evaluation and reproduction commands |
-| `tests/` | Software tests and synthetic fixtures |
 | `data/README.md` | External input formats and resource locations |
 | `docs/` | Method and reproduction instructions |
 
