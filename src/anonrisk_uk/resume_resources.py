@@ -21,12 +21,18 @@ class ResumeResources:
     detector: object
     feature_index: object
     artifact_dir: Path
+    risk_estimator: object | None = None
 
 
 def resource_paths(config_path=DEFAULT_CONFIG):
     settings = json.loads(Path(config_path).read_text())
     profile = resolve_config(ROOT / settings["resources_config"])
     out = Path(profile["out"])
+    if settings.get("controller") in {"regression", "action_regression"}:
+        return settings, profile, {
+            "risk_model": ROOT / settings["risk_model"],
+            "detector": out / "detection/selected_detector.json",
+        }
     return settings, profile, {
         "bundle": out / "workua/bundle.pkl",
         "retention": out / "pipeline/retention_vectorizer.pkl",
@@ -45,6 +51,22 @@ def load_resume_resources(config_path=DEFAULT_CONFIG):
         raise ValueError("Local detector selection is not ready")
     config = {**profile, "adaptive": settings["adaptive"], "local_files_only": True,
               "gliner_threshold": selection.get("gliner_threshold")}
+    config["controller"] = settings.get("controller", "search")
+    if config["controller"] in {"regression", "action_regression"}:
+        from .action_resume import SCHEMA as ACTION_SCHEMA
+        from .action_resume import ActionResumeRegressor
+        from .learned_resume_risk import SCHEMA, ResumeRiskRegressor
+
+        with paths["risk_model"].open("rb") as handle:
+            estimator = pickle.load(handle)
+        supported = ((isinstance(estimator, ResumeRiskRegressor) and estimator.schema == SCHEMA)
+                     if config["controller"] == "regression" else
+                     (isinstance(estimator, ActionResumeRegressor) and estimator.schema == ACTION_SCHEMA))
+        if not supported:
+            raise ValueError("Model artifact does not match the selected learned controller")
+        detector, _ = detector_set(config, names)
+        return ResumeResources(config, [], estimator.codec, estimator.retention_vectorizer,
+                               detector, None, paths["risk_model"].parent, estimator)
     with paths["bundle"].open("rb") as handle:
         bundle = pickle.load(handle)
     with paths["retention"].open("rb") as handle:

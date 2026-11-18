@@ -21,6 +21,16 @@ TOOL = "category_taxonomy"
 NONE = "none"
 MAP_PATH = Path(__file__).resolve().parents[2] / "data" / "taxonomy" / "category_map.json"
 
+# Audited corrections to exact cached keys. Retouching is image work, whereas
+# bare "Express" is ambiguous between a JS framework and Outlook Express.
+# Abstention preserves/masks the original instead of inventing a profession.
+CURATED_CORRECTIONS = {
+    "SKILL::beauty.ретуш": "photo",
+    "SKILL::beauty.ретушь": "photo",
+    "SKILL::б'юті ретуш": "photo",
+    "SKILL::express": None,
+}
+
 # label -> {"domains": {l2_id: name}, "categories": {l1_id: (name, l2_id, hint for the classifier)}}
 # Category names avoid the most frequent leaf words, so the trivial-category rule
 # rarely discards common values.
@@ -606,8 +616,10 @@ def _load(path: str) -> dict:
 
 def lookup(label: str, value: str, path: str | Path | None = None) -> list[tuple[str, str, float]]:
     """Cached closed-vocabulary parents in the shape of ``action_space._parents``."""
-    entry = _load(str(path or MAP_PATH)).get(map_key(label, value))
-    names = category(label, entry.get("l1") or NONE) if entry else None
+    key = map_key(label, value)
+    entry = _load(str(path or MAP_PATH)).get(key)
+    l1 = CURATED_CORRECTIONS.get(key, entry.get("l1")) if entry else None
+    names = category(label, l1 or NONE)
     if names is None or any(is_trivial(value, name) for name in names):
         return []
     return [(names[0], TOOL, 0.2), (names[1], TOOL, 0.4)]

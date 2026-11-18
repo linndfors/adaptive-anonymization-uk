@@ -1,42 +1,37 @@
-# Python environments, caches and build outputs
+# Python environments and generated files
 .venv*/
 venv/
 __pycache__/
 *.py[cod]
-*.so
 *.egg-info/
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
-.ipynb_checkpoints/
 .uv-cache/
+.ipynb_checkpoints/
 .coverage
 htmlcov/
 /build/
 /dist/
 /dist-ci/
-tests/
-results/
-docs/
-
-
-# Credentials and machine-specific configuration
+/tests
+# Credentials and editor configuration
 .env
 .env.*
-!.env.example
 .streamlit/secrets.toml
 .DS_Store
 .idea/
 .vscode/
 
-# Private data, models, local research outputs and writing drafts
-/data/raw/
-/data/taxonomy/cache/
-/artifacts/*
-!/artifacts/README.md
+# Local inputs, trained weights and generated experiment outputs
+/artifacts/
+/results/
+/notebooks/
+/data/**
+!/data/README.md
 /models/
 /outputs/
-/reports/generated/
+/reports/
 /.local-notes/
 *.pkl
 *.pt
@@ -44,6 +39,7 @@ docs/
 *.ckpt
 *.safetensors
 *.zip
+*.tar.gz
 *.download
 *.tmp
 *.log

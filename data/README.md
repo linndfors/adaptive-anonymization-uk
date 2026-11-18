@@ -1,41 +1,32 @@
-# Data and derived resources
+# Data resources
 
-## Included in the repository
+The category lookup is an external runtime resource. The trusted model archive
+restores it to `data/taxonomy/category_map.json` with a verified checksum.
+It contains term-to-category assignments used by the transformation rules.
 
-- `processed/e3_jsi_uk.jsonl`: translated synthetic E3-JSI span-detection data.
-- `taxonomy/category_map.json`: cached assignments of frequent professional
-  values to the fixed category hierarchy. This derived lookup is required by
-  local semantic generalization; it is not a record-level resume dataset.
-- `taxonomy/manifest.json` and `taxonomy/validation*`: construction provenance,
-  coverage and taxonomy-review diagnostics. An earlier offline LLM-assisted
-  assignment step produced the lookup; inference uses the saved map locally.
-- `metadata/vacancies_sample.manifest.json`: provenance of the historical
-  vacancy sample, without its record-level contents.
+All inputs and generated resources are external and Git-ignored:
 
-Taxonomy assignments include known contextual mistakes. Coverage and category
-validation are not proof of factual preservation; see the
-[current evaluation](../results/adaptive_resume_v3.3/README.md).
+| Input | Local path | Used by |
+|---|---|---|
+| WorkUA CSV | `data/raw/all_resumes.csv` | New training and corpus evaluation |
+| Prepared E3-JSI Ukrainian JSONL | `data/processed/e3_jsi_uk.jsonl` | Detector preparation and evaluation |
+| Category lookup | `data/taxonomy/category_map.json` | Local transformation rules |
+| Original split and evaluation bundle | `artifacts/` | Exact experiment reproduction |
 
-## External datasets
+The original prepared E3-JSI file is supplied separately. Each record has
+`source_row_id`, `text_uk` and `entities_uk`; annotations contain character
+offsets, entity text and type labels. Changing translations, annotation repairs
+or source data changes the detector evaluation.
 
-WorkUA resume and vacancy records are not committed. Download them locally:
+For a new experiment, download WorkUA with:
 
 ```bash
 uv run python scripts/fetch_workua.py --out data/raw/all_resumes.csv
-uv run python scripts/fetch_vacancies.py \
-  --out data/raw/vacancies_sample.ndjson --limit 10000 --seed 42
 ```
 
-Vacancies are used only by historical downstream-utility experiments, not by the
-current resume demo. Source dataset names and extraction parameters are recorded
-by the fetch scripts. The `data/raw/` directory and generated manifests remain
-Git-ignored. Upstream dataset terms apply independently of the project code.
+The command requires the `data` extra. Original input hashes and saved person
+splits are needed to reproduce an existing experiment. A fresh download cannot
+replace them while claiming the same results.
 
-The current vacancy fetcher scans the full source and uses a seeded hash of the
-vacancy ID. The historical 10,000-vacancy run used `first_n_not_random`; refetching
-with the current sampler does not reproduce that old table.
-
-WorkUA sampling preserves whole person clusters. The full CSV is parsed before
-sampling, so a small pool reduces model/index costs but not the initial load.
-Raw records, per-person keys, detector caches and API-response caches must not
-be added to either Git or source distributions.
+Inference with the trained runtime needs no WorkUA CSV or E3-JSI documents.
+See [reproduction](../docs/reproduction.md) for installation and input delivery.

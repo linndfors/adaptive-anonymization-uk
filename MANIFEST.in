@@ -1,0 +1,27 @@
+include README.md
+include .gitignore
+include .gitattributes
+include uv.lock
+include .python-version
+recursive-include configs *.json
+recursive-include app *.py *.css
+include .streamlit/config.toml
+include data/README.md
+recursive-include docs *.md
+recursive-include scripts *.py *.md
+recursive-include tests *.py *.json *.txt
+recursive-include .github/workflows *.yml
+prune artifacts
+prune results
+prune notebooks
+prune data/raw
+prune data/processed
+prune data/metadata
+prune data/taxonomy/cache
+prune .local-notes
+prune .uv-cache
+prune build
+prune dist
+prune dist-ci
+global-exclude __pycache__ *.py[cod] .DS_Store .env .env.* secrets.toml
+global-exclude *.pkl *.pt *.pth *.ckpt *.safetensors *.zip *.log

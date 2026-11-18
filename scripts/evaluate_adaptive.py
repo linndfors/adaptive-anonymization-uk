@@ -43,6 +43,7 @@ def used_ids(root, ignore_pool=None):
         sources.append(str(path.relative_to(root)))
     paths = set((root / "artifacts/evaluations").glob("**/pool_ids.csv"))
     paths.update((root / "artifacts/evaluations").glob("**/holdout_pool_ids.csv"))
+    paths.update((root / "artifacts/models").glob("**/pool_ids.csv"))
     for path in sorted(paths):
         if ignore_pool is not None and path.resolve() == ignore_pool.resolve():
             continue
@@ -70,6 +71,8 @@ def replay_pool(path):
 def run(args):
     args.out.mkdir(parents=True, exist_ok=False)
     resources = load_resume_resources(args.config)
+    if resources.config.get("controller") == "regression":
+        raise ValueError("Use evaluate_learned_resume.py for the regression controller; this script evaluates search v3.3")
     if args.purpose == "regression":
         if not args.reuse_pool:
             raise ValueError("Regression requires an explicit previously used pool")
@@ -210,7 +213,7 @@ def run(args):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--config", default="configs/adaptive_resume.json")
+    parser.add_argument("--config", default="configs/baselines/adaptive_resume_v3_3.json")
     parser.add_argument("--pool-size", type=int, default=12000)
     parser.add_argument("--max-persons", type=int, default=300)
     parser.add_argument("--seed", type=int, default=20261110)

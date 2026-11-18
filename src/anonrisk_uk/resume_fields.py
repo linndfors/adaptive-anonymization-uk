@@ -11,6 +11,7 @@ from dataclasses import replace
 
 from .adaptive_text import ReleaseDocument, TextUnit
 from .policy_execution import ToolRouter
+from .resume_context import skill_field_end
 
 VERSION = "resume_fields_v1"
 CORE_GROUPS = {"skills", "title", "exp_position"}
@@ -44,6 +45,7 @@ def field_document(text: str, detected: ReleaseDocument) -> ReleaseDocument:
     for header in SKILL_HEADER.finditer(text):
         end = text.find("\n", header.end())
         end = len(text) if end < 0 else end
+        end = skill_field_end(text, header.end(), end)
         for item in re.finditer(r"[^,;•\n]+", text[header.end():end]):
             value = item.group().strip().strip(". ")
             if not value:

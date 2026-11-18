@@ -16,7 +16,7 @@ BIRTH_PREFIX = (r'\b(?:народився|народилася|народила�
                 r'родился|родилась|дата[ \t]+рождения|born(?:[ \t]+on)?|date[ \t]+of[ \t]+birth|DOB)')
 BIRTH_DATE = re.compile(
     rf'{BIRTH_PREFIX}[ \t]*(?:[:—-][ \t]*)?(?:[ув][ \t]+)?'
-    rf'(?P<date>{FULL_DATE}|{YEAR})(?!\d)(?:[ \t]+(?:року|года)|[ \t]*[рг]\.)?', re.IGNORECASE,
+    rf'(?P<date>{FULL_DATE}|{YEAR})(?!\d)(?:[ \t]+(?:року|році|года)|[ \t]*[рг]\.)?', re.IGNORECASE,
 )
 BIRTH_DATE_AFTER_PLACE = re.compile(
     rf'{BIRTH_PREFIX}[ \t]+(?:[ув]|в[ \t]+місті)[ \t]+[^\n.!?]{{1,70}}?[ \t,]+'
@@ -48,16 +48,21 @@ ROLE_FORMS = {
     'інженеркою': ('інженеркою програмного забезпечення', 'ІТ-фахівчинею'),
     'developer': ('software developer', 'IT specialist'),
 }
+_TECHNOLOGY = r'(?:' + '|'.join(re.escape(v) for v in sorted(TECHNOLOGIES, key=len, reverse=True)) + r')'
 TECHNICAL_JOB = re.compile(
-    r'(?<![\w+\-‑–])(?:' + '|'.join(re.escape(v) for v in sorted(TECHNOLOGIES, key=len, reverse=True))
-    + r')[-‑–](?P<role>' + '|'.join(sorted(ROLE_FORMS, key=len, reverse=True)) + r')(?!\w)', re.IGNORECASE,
+    r'(?<![\w+\-‑–])' + _TECHNOLOGY + r'(?:[ \t]*/[ \t]*' + _TECHNOLOGY + r')*'
+    + r'[-‑–](?P<role>' + '|'.join(sorted(ROLE_FORMS, key=len, reverse=True)) + r')(?!\w)', re.IGNORECASE,
 )
 SENTENCE_END = re.compile(r'[.!?](?=\s|$)|[\r\n]+')
+CLAUSE_END = re.compile(
+    r';|,[ \t]+(?:а|але|проте|однак|and|but|while)[ \t]+'
+    r'|[ \t]+(?:і|та)[ \t]+(?=(?:працю|навча|закінчи|worked|studied))', re.IGNORECASE,
+)
 SKILL_STATEMENT = re.compile(
     r'(?i)[ \t]*(?P<header>(?:(?:я|також|добре|вільно|впевнено)[ \t]+){0,3}'
     r'(?:володію|знаю|опанував|опанувала|маю[ \t]+досвід[ \t]+роботи[ \t]+з)[ \t]+)'
 )
-LIST_SEPARATOR = re.compile(r'[,;]|[ \t]+(?:та|і|й|and|&)[ \t]+', re.IGNORECASE)
+LIST_SEPARATOR = re.compile(r'[,;•]|[ \t]+(?:та|і|й|and|&)[ \t]+', re.IGNORECASE)
 WORK = re.compile(r'працю|работ|worked|employ|компан|company', re.IGNORECASE)
 STUDY = re.compile(r'навча|навчив|закінчив|закінчила|учил|education|studied', re.IGNORECASE)
 SCHOOL = re.compile(r'університет|університеті|академ|коледж|university|college', re.IGNORECASE)
@@ -77,6 +82,16 @@ def skill_item_ranges(text, start, end):
         cursor = separator.end() if separator else end
 
 
+def skill_field_end(text, start, end):
+    """A skill heading cannot consume a following prose sentence on one line.
+
+    Internal dots in Node.js/Express.js/.NET are not sentence boundaries because
+    they are not followed by whitespace or the end of the field.
+    """
+    boundary = SENTENCE_END.search(text, start, end)
+    return boundary.start() if boundary else end
+
+
 def sentence_ranges(text):
     start = 0
     for boundary in SENTENCE_END.finditer(text):
@@ -91,6 +106,20 @@ def sentence_context(text, start, end):
     left = max((m.end() for m in SENTENCE_END.finditer(text, 0, start)), default=0)
     boundary = SENTENCE_END.search(text, end)
     return text[left:boundary.start() if boundary else len(text)]
+
+
+def clause_context(text, start, end):
+    """Use local work/study evidence instead of another clause in the sentence."""
+    left = max((m.end() for m in SENTENCE_END.finditer(text, 0, start)), default=0)
+    sentence_end = SENTENCE_END.search(text, end)
+    right = sentence_end.start() if sentence_end else len(text)
+    for boundary in CLAUSE_END.finditer(text, left, right):
+        if boundary.end() <= start:
+            left = boundary.end()
+        elif boundary.start() >= end:
+            right = boundary.start()
+            break
+    return text[left:right]
 
 
 def birth_units(text):
@@ -131,7 +160,7 @@ def context_units(text):
 def refine_sentence_types(text, units):
     result = []
     for u in units:
-        context = sentence_context(text, u.start, u.end)
+        context = clause_context(text, u.start, u.end)
         if u.label in {'ORGANIZATION', 'EMPLOYER', 'EDUCATION_INSTITUTION'}:
             if STUDY.search(context) or SCHOOL.search(text[u.start:u.end]) and not WORK.search(context):
                 u = replace(u, label='EDUCATION_INSTITUTION', group='edu_institution', source='sentence_context')

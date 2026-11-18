@@ -52,6 +52,15 @@ def check_direct_identifiers(text):
 
 
 def options(doc, u):
+    cache = getattr(doc, "_anonrisk_options", None)
+    if cache is not None:
+        if u not in cache:
+            cache[u] = _options(doc, u)
+        return cache[u]
+    return _options(doc, u)
+
+
+def _options(doc, u):
     value = doc.text[u.start:u.end]
     if u.role in {"DIRECT", "SENSITIVE"}:
         return [MASKS.get(u.label, f"[{u.label}]")]
@@ -86,6 +95,11 @@ def options(doc, u):
     return [value, specific, broad, placeholder, placeholder]
 
 
+def policy_level(policy, unit, index):
+    """Allow a unit override while preserving recorded group-level policies."""
+    return policy.get(f"@{index}", policy.get(unit.group, 0))
+
+
 def planned_edits(doc, policy):
     """Produce one auditable edit plan, including category merging inside skill lists.
 
@@ -93,16 +107,20 @@ def planned_edits(doc, policy):
     a removed duplicate's preceding separator and are used by both the executor
     and highlighting. Categories never merge across lines, prose or contacts.
     """
+    cache = getattr(doc, "_anonrisk_edits", None)
+    cache_key = tuple(sorted(policy.items()))
+    if cache is not None and cache_key in cache:
+        return cache[cache_key]
     rows, seen, previous = [], set(), None
-    for u in doc.units:
+    for i, u in enumerate(doc.units):
         choices = options(doc, u)
-        level = min(policy.get(u.group, 0), len(choices) - 1)
+        level = min(policy_level(policy, u, i), len(choices) - 1)
         original, replacement = doc.text[u.start:u.end], choices[level]
         geographic_only = u.source == "employer_phrase" and level == 0 and policy.get("city", 0) > 0
         if geographic_only:
             replacement = employer_without_geography(original)
         same_list = (previous is not None and previous.group == u.group == "skills"
-                     and re.fullmatch(r"[ \t]*(?:[,;]|та|і|й|and|&)[ \t]*",
+                     and re.fullmatch(r"[ \t]*(?:[,;•]|та|і|й|and|&)[ \t]*",
                                       doc.text[previous.end:u.start], re.IGNORECASE) is not None)
         if not same_list:
             seen.clear()
@@ -127,6 +145,10 @@ def planned_edits(doc, policy):
         if u.label == "SKILL_HEADER" and any(v.group == "skills" and v.source == u.source and rows[j]["applied"]
                                               for j, v in enumerate(doc.units)):
             rows[i].update(replacement="Навички: ", applied=True, decision="surface_rephrase", status="applied")
+    if cache is not None:
+        if len(cache) >= 256:
+            cache.pop(next(iter(cache)))
+        cache[cache_key] = rows
     return rows
 
 
@@ -305,6 +327,14 @@ def compare_resume(resources, text, *, extractor=None, indexes=None, document=No
 
 def anonymize_resume(resources, text, *, extractor=None):
     """The single production entry point. Fixed policies are research controls only."""
+    if resources.config.get("controller") == "action_regression":
+        from .action_resume import anonymize_action
+
+        return anonymize_action(resources, text, extractor=extractor)
+    if resources.config.get("controller") == "regression":
+        from .learned_resume import anonymize_learned
+
+        return anonymize_learned(resources, text, extractor=extractor)
     result = compare_resume(resources, text, extractor=extractor)
     if result.diagnostics["direct_check"]["issues"]:
         raise DirectIdentifierError("Known direct-identifier patterns remain in the proposed release")

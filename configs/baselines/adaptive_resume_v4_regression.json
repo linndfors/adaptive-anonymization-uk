@@ -1,0 +1,15 @@
+{
+  "method": "adaptive_resume_v4_regression",
+  "controller": "regression",
+  "resources_config": "configs/research_entity_policy_v4c_local.json",
+  "risk_model": "artifacts/models/resume_risk_v4/model.pkl",
+  "adaptive": {
+    "utility_floor": 0.55
+  },
+  "selection": {
+    "dataset": "development only: 94 training people / 24 validation people",
+    "risk_target": "validation-selected, stored inside the model artifact",
+    "test_used": false,
+    "training_command": "python scripts/train_resume_risk.py --out artifacts/models/resume_risk_v4"
+  }
+}

@@ -12,7 +12,7 @@ from pathlib import Path
 from .adaptive_text import ReleaseDocument, TextUnit
 from .detectors import ApiBudget
 from .entity_demo import text_document
-from .resume_context import TECHNICAL_JOB, overlay_context, refine_sentence_types, skill_item_ranges
+from .resume_context import TECHNICAL_JOB, overlay_context, refine_sentence_types, skill_field_end, skill_item_ranges
 from .resume_fields import field_document
 from .workua import GROUP_LABELS, SENSITIVE_GROUPS
 
@@ -164,6 +164,8 @@ def public_field_document(text, detected):
         if line_end >= 0 and text[match.end():line_end].strip():
             end = min(end, line_end)
         group = headings[match[1].casefold()]
+        if group == "skills":
+            end = skill_field_end(text, match.end(), end)
         regions.append((match.start(), end))
         values = (skill_item_ranges(text, match.end(), end) if group == "skills" else
                   ((match.end() + v.start(), match.end() + v.end())

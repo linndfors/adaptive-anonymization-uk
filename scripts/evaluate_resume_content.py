@@ -1,7 +1,6 @@
 """Post-hoc semantic evaluation of saved local releases. No API calls or tuning.
 
-Scores are embedding similarities, not percentages of retained meaning. Export
-a deterministic, method-blinded review packet for separate factual assessment.
+Scores are embedding similarities, not percentages of retained meaning.
 """
 
 from __future__ import annotations
@@ -11,7 +10,6 @@ import hashlib
 import json
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 from group_policy_eval import person_bootstrap
 from threadpoolctl import threadpool_limits
@@ -40,9 +38,6 @@ def run(args):
                          "max_sequence_tokens": 128, "long_text": "all non-overlapping token windows; weighted pooling",
                          "professional_fields": ["title", "exp_position", "skills", "exp_resp", "edu_faculty"],
                          "metric_note": "embedding cosine, not factual entailment or a percent of meaning",
-                         "review": {"seed": 20261101, "people": 12, "methods": 3,
-                                    "rubric_sha256": hashlib.sha256(
-                                        (ROOT / "docs/CONTENT_REVIEW_PROTOCOL_UK.md").read_bytes()).hexdigest()},
                          "contrast_fixture_sha256": hashlib.sha256(
                              (ROOT / "tests/fixtures/content_contrasts_uk.json").read_bytes()).hexdigest(),
                          "policy_selection": "none; frozen outputs, no feedback to anonymization",
@@ -87,35 +82,18 @@ def run(args):
                "empty_professional_outputs": int((part.output_professional_chunks == 0).sum())}
         row.update({metric: float(part[metric].mean()) for metric in metrics})
         summary.append(row)
-    adaptive = f"adaptive_{protocol['utility_floors'][0]:g}"
+    adaptive = protocol.get('selected') or f"adaptive_{protocol['utility_floors'][0]:g}"
     paired = {}
-    for control in ["historical_L2", "historical_L3", "historical_v2", "matched_all_quasi"]:
+    for control in ["historical_L2", "historical_L3", "historical_v2", "matched_all_quasi", "search_v3_3", "regression_v4"]:
+        if control not in models:
+            continue
         for metric in metrics:
             table = frame.pivot(index=["id", "person"], columns="method", values=metric)
             diff = (table[adaptive] - table[control]).dropna()
             paired[f"vs_{control}_{metric}"] = person_bootstrap(diff.to_numpy(), diff.index.get_level_values("person"))
-    report = {**semantic_protocol, "summary": summary, "paired_differences_95ci": paired,
-              "review_status": "packet only; no human ratings yet"}
+    report = {**semantic_protocol, "summary": summary, "paired_differences_95ci": paired}
     (args.out / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2))
     pd.DataFrame(summary).to_csv(args.out / "summary.csv", index=False)
-    # One resume per sampled person, not multiple near-duplicates per reviewer.
-    rng = np.random.default_rng(20261101)
-    people = sorted({r["person"] for r in records})
-    chosen = set(rng.permutation(people)[:min(12, len(people))])
-    packet, key, seen = [], [], set()
-    for record in records:
-        if record["person"] not in chosen or record["person"] in seen:
-            continue
-        seen.add(record["person"])
-        for method in rng.permutation([adaptive, "historical_L2", "matched_all_quasi"]):
-            code = f"review_{len(packet) + 1:03d}"
-            packet.append({"code": code, "source": professional_view(record["original"]),
-                           "output": professional_view(record["outputs"][method]),
-                           "professional_meaning": None, "factual_distortion": None,
-                           "readability": None, "notes": ""})
-            key.append({"code": code, "id": record["id"], "person": record["person"], "method": method})
-    (args.out / "review_packet.json").write_text(json.dumps(packet, ensure_ascii=False, indent=2))
-    pd.DataFrame(key).to_csv(args.out / "review_key.csv", index=False)
     fixture = ROOT / "tests/fixtures/content_contrasts_uk.json"
     contrasts = []
     for case in json.loads(fixture.read_text()):

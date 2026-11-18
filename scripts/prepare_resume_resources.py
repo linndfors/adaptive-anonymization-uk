@@ -40,6 +40,10 @@ def prepare(config_path, *, check_only=False):
             valid = detector_ready(path, names) if name == "detector" else path.is_file()
             print(f"{name}: {'ready' if valid else 'missing or incomplete'} ({path})")
         return False
+    if settings.get("controller") in {"regression", "action_regression"}:
+        command = "train_action_resume.py --data-dir <reserved-data>" if settings["controller"] == "action_regression" else "train_resume_risk.py"
+        raise FileNotFoundError(f"Train the standalone regressor first: python scripts/{command} --out <new-directory>. "
+                                "Bootstrap training resources with --config configs/baselines/adaptive_resume_v3_3.json")
     if not paths["bundle"].is_file() and not Path(profile["workua_path"]).is_file():
         raise FileNotFoundError("Download WorkUA first: python scripts/fetch_workua.py --out data/raw/all_resumes.csv")
     # Bootstrap must also work before any historical experiment has been run.
