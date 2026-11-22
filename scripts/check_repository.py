@@ -10,7 +10,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PRIVATE_DIRECTORIES = {"artifacts", "results", "notebooks", "models", "outputs", "reports",
-                       ".local-notes", ".uv-cache", ".venv", "__pycache__"}
+                       "tests", "build", "dist", "dist-ci", "htmlcov", "__pycache__",
+                       ".local-notes", ".uv-cache", ".venv", ".pytest_cache", ".ruff_cache",
+                       ".mypy_cache", ".ipynb_checkpoints"}
 DATA_FILES = {"data/README.md"}
 SOURCE_SUFFIXES = {".py", ".md", ".json", ".toml", ".lock", ".css", ".txt", ".yml", ".yaml", ".in"}
 SPECIAL_FILES = {".gitignore", ".gitattributes", ".python-version", "LICENSE", "NOTICE"}
@@ -27,7 +29,9 @@ def inspect(path, root):
     errors = []
     if path.is_symlink():
         return [f"Symlink in source submission: {name}"]
-    if PRIVATE_DIRECTORIES.intersection(relative.parts) or any(p.startswith('.venv') for p in relative.parts):
+    if PRIVATE_DIRECTORIES.intersection(relative.parts) or any(
+        p.startswith('.venv') or p.endswith('.egg-info') for p in relative.parts
+    ):
         errors.append(f"Generated/private directory: {name}")
     if path.name.startswith('.env') or path.name in {"secrets.toml", ".DS_Store"}:
         errors.append(f"Local configuration or credential file: {name}")

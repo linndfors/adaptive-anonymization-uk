@@ -13,7 +13,9 @@ recursive-include .github/workflows *.yml
 prune artifacts
 prune results
 prune notebooks
+prune tests
 prune data/raw
+prune data/corpus
 prune data/processed
 prune data/metadata
 prune data/taxonomy/cache

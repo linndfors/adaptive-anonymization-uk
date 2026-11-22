@@ -10,4 +10,4 @@ font = "sans serif"
 gatherUsageStats = false
 
 [server]
-maxUploadSize = 1
+maxUploadSize = 50

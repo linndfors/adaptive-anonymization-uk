@@ -33,6 +33,13 @@
   color: var(--demo-ink); margin: 0 0 11px; font-weight: 750;
 }
 .demo-hero p { color: var(--demo-muted); font-size: 15px; line-height: 1.6; margin: 0; max-width: 670px; }
+.st-key-method_bar {
+  margin: 16px 0 8px; padding: 12px 16px; background: #fff;
+  border: 1px solid var(--demo-line); border-radius: 14px;
+}
+.st-key-method_bar [data-testid="stToggle"] { padding: 8px 0; }
+.st-key-method_bar [data-testid="stSelectbox"] label { font-size: 12px; color: var(--demo-muted); }
+[data-testid="stFileUploaderDropzone"] { background: #f8fafb; border-color: #dce6e9; }
 .demo-badges { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 6px; justify-content: flex-end; }
 .demo-badge {
   display: inline-flex; gap: 7px; align-items: center;
@@ -93,7 +100,7 @@
 [data-testid="stButton"] button[kind="primary"] { background: #0f766e; border-color: #0f766e; }
 [data-testid="stButton"] button[kind="primary"]:hover { background: #0a635d; border-color: #0a635d; }
 [data-testid="stMetricLabel"] { color: var(--demo-muted); font-size: 11px; }
-[data-testid="stMetricValue"] { font-size: 24px; font-weight: 600; color: #264d42; }
+[data-testid="stMetricValue"] { font-size: clamp(16px, 1.7vw, 23px); font-weight: 600; color: #264d42; }
 .demo-result-note { font-size: 11px; color: #85918b; line-height: 1.6; margin-top: 4px; }
 .demo-detail-title { color: #566b77; font-size: 13px; font-weight: 600; margin-top: 22px; }
 [data-testid="stExpander"] { border-color: var(--demo-line); background: white; border-radius: 12px; }
@@ -109,5 +116,7 @@
   .demo-hero { flex-direction: column; gap: 10px; }
   .demo-badges { justify-content: flex-start; }
   .st-key-input_card, .st-key-output_card { padding: 13px !important; }
+  .st-key-method_bar { padding: 10px 12px; }
+  [data-testid="stMetricValue"] { font-size: 21px; }
   .demo-method { grid-template-columns: 1fr; }
 }

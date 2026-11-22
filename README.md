@@ -94,7 +94,48 @@ uv run streamlit run app/text_demo.py
 ```
 
 Paste a resume, upload a UTF-8 `.txt` file or choose an example. The interface
-shows the anonymized text, highlighted edits and selected actions.
+offers the adaptive model and four fixed policies, highlighted edits, text
+export and an optional comparison of all methods.
+
+Fixed policies are labelled L1, L2 and L3 by strategy; they use the current text
+parser and transformations rather than the historical structured-field renderer.
+
+Enable **Підключити корпус** to use the standard local corpus automatically.
+The app reads `data/corpus/default.jsonl`; if it is absent, it uses the six
+authored examples and labels the corpus **Демо**. No download is required.
+Choose **Власний** in the corpus panel to upload CSV, JSON/JSONL or TXT files.
+CSV/JSON records need a `text` field; structured WorkUA records are also supported.
+The corpus evaluates outputs without changing the selected policy. For an
+ordinary input, the original is added once as a search target (S1). BM25 and character
+TF-IDF try to recover it from the anonymized query. The main metric is the
+largest expected reciprocal rank (RR) before and after, with its relative
+percentage change. A value of 1 means an attacker still ranks the target first.
+Ties are handled exactly. The input remains in
+session memory and is not saved to the corpus file.
+Search uses content with common field headings, service masks and formatting
+removed consistently from the pool and queries. Target TF-IDF similarity and
+the score gap to the nearest competitor explain changes while rank stays first.
+Lower similarity is a weaker textual match, not proof of lower linkage success
+when RR remains 1. Scores are read directly from the fixed index.
+
+If another resume of the same person is known, select it for a separate
+cross-resume attack (S2). That scenario excludes exact input copies and does
+not insert the input. RR is a retrieval score, not a calibrated probability of
+identification. UI S1 results do not replace the independent corpus S2 results.
+
+For a guided demonstration, choose **Підтримка**, **Аналітика**, **Логістика**,
+**Облік**, **Персонал** or **Проєкти**, then click **Анонімізувати**. Each curated synthetic pair
+automatically selects the standard background and adds one fictional related
+resume in session memory. The selected target explicitly identifies S2.
+The six inputs use paragraphs and ordinary work-history descriptions, with different
+names, lengths and writing styles. Both members of each pair are synthetic.
+Choose **Оригінал резюме (автоматично)** to compare S1 on the same input; the
+synthetic related target is then removed from the scoring pool. These are
+illustrations selected for the prepared 6000-record background, not independent
+test cases. Scores are recomputed; changing the background can change them.
+A fresh session opens the support S2 example with its paired target and corpus enabled.
+Scenario definitions and synthetic-example provenance are available under **Довідка**;
+they are kept out of the main editing view.
 
 Command-line processing of an existing text file:
 
